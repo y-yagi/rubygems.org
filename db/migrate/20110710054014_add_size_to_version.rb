@@ -1,3 +1,4 @@
+# typed: false
 class AddSizeToVersion < ActiveRecord::Migration[4.2]
   def self.up
     add_column :versions, :size, :integer

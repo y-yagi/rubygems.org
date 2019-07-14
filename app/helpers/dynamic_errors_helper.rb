@@ -1,3 +1,4 @@
+# typed: false
 module DynamicErrorsHelper
   # This code was extracted from https://github.com/joelmoss/dynamic_form/blob/master/lib/action_view/helpers/dynamic_form.rb#L186
   # with a modification to fix https://github.com/rubygems/rubygems.org/issues/1834 issue. We also removed the dynamic_form

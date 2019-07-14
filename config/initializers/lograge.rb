@@ -1,3 +1,4 @@
+# typed: strict
 if Rails.env.production? || Rails.env.staging?
   Rails.application.configure do
     # Enable lograge

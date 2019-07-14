@@ -1,3 +1,4 @@
+# typed: true
 class Api::V1::DependenciesController < Api::BaseController
   before_action :check_gem_count
   GEM_REQUEST_LIMIT = 200

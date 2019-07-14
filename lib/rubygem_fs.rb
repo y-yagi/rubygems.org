@@ -1,3 +1,4 @@
+# typed: false
 module RubygemFs
   def self.instance
     @fs ||=

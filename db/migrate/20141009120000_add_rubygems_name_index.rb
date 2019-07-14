@@ -1,3 +1,4 @@
+# typed: false
 class AddRubygemsNameIndex < ActiveRecord::Migration[4.2]
   def up
     # add_index :rubygems, 'upper(name) varchar_pattern_ops', :name => :rubygems_name_upcase

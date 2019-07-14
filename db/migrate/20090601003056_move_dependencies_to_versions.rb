@@ -1,3 +1,4 @@
+# typed: false
 class MoveDependenciesToVersions < ActiveRecord::Migration[4.2]
   def self.up
     remove_column :dependencies, :rubygem_id

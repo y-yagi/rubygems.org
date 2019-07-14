@@ -1,3 +1,4 @@
+# typed: true
 module UsersHelper
   def twitter_username(user)
     "@#{user.twitter_username}" if user.twitter_username.present?

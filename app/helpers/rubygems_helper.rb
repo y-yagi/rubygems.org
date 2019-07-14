@@ -1,3 +1,4 @@
+# typed: false
 module RubygemsHelper
   def pluralized_licenses_header(version)
     t("rubygems.show.licenses_header").pluralize(version&.licenses&.length || 0)

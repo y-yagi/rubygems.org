@@ -1,3 +1,4 @@
+# typed: true
 class RubygemsController < ApplicationController
   include LatestVersion
   before_action :set_blacklisted_gem, only: :show, if: :blacklisted?

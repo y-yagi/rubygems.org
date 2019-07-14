@@ -1,3 +1,4 @@
+# typed: false
 class AddMissingIndicies < ActiveRecord::Migration[4.2]
   def self.up
     add_index 'rubygems', 'name'

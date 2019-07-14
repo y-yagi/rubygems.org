@@ -1,3 +1,4 @@
+# typed: true
 class Api::V1::ActivitiesController < Api::BaseController
   def latest
     versions = Version.new_pushed_versions(50)

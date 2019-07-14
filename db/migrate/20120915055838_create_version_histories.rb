@@ -1,3 +1,4 @@
+# typed: true
 class CreateVersionHistories < ActiveRecord::Migration[4.2]
   def change
     create_table :version_histories do |t|

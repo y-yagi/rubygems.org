@@ -1,3 +1,4 @@
+# typed: true
 class Linkset < ApplicationRecord
   belongs_to :rubygem
 

@@ -1,3 +1,4 @@
+# typed: true
 Clearance.configure do |config|
   config.allow_sign_up = (ENV['DISABLE_SIGNUP'].to_s == 'true') ? false : true
   config.mailer_sender = "RubyGems.org <no-reply@mailer.rubygems.org>"

@@ -1,3 +1,4 @@
+# typed: false
 class AddTimeStampsToUsers < ActiveRecord::Migration[4.2]
   def self.up
     add_column :users, :created_at, :datetime

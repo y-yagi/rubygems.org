@@ -1,3 +1,4 @@
+# typed: false
 class AddRequirements < ActiveRecord::Migration[4.2]
   def self.up
     create_table :requirements  do |t|

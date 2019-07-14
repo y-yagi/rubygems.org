@@ -1,3 +1,4 @@
+# typed: true
 require 'delayed_job'
 Delayed::Worker.max_attempts = 10
 Delayed::Worker.max_run_time = 5.minutes

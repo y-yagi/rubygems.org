@@ -1,3 +1,4 @@
+# typed: true
 class VersionsController < ApplicationController
   before_action :find_rubygem
 

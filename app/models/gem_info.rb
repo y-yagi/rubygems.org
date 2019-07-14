@@ -1,3 +1,4 @@
+# typed: true
 class GemInfo
   def initialize(rubygem_name)
     @rubygem_name = rubygem_name

@@ -1,3 +1,4 @@
+# typed: false
 class AddMoreIndexesToVersions < ActiveRecord::Migration[4.2]
   def self.up
     add_index :versions, :number

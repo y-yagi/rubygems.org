@@ -1,3 +1,4 @@
+# typed: false
 class RemoveRubyforger < ActiveRecord::Migration[4.2]
   def up
     drop_table :rubyforgers

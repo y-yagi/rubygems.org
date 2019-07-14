@@ -1,3 +1,4 @@
+# typed: true
 class FixDependencies < ActiveRecord::Migration[4.2]
   def self.up
     # fix bad version reqs

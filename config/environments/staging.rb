@@ -1,3 +1,4 @@
+# typed: strict
 require Rails.root.join("config", "secret") if Rails.root.join("config", "secret.rb").file?
 
 Rails.application.configure do

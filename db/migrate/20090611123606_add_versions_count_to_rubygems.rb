@@ -1,3 +1,4 @@
+# typed: false
 class AddVersionsCountToRubygems < ActiveRecord::Migration[4.2]
   def self.up
     add_column :rubygems, :versions_count, :integer, default: 0

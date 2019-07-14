@@ -1,3 +1,4 @@
+# typed: false
 class AddApiKeyToUsers < ActiveRecord::Migration[4.2]
   def self.up
     add_column :users, :api_key, :string

@@ -1,3 +1,4 @@
+# typed: false
 class SessionsController < Clearance::SessionsController
   def create
     @user = find_user(params.require(:session))

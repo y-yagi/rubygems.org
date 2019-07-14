@@ -1,3 +1,4 @@
+# typed: true
 class ClearanceBackdoor
   def initialize(app)
     @app = app

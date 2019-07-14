@@ -1,3 +1,4 @@
+# typed: true
 class Api::V1::TimeframeVersionsController < Api::BaseController
   class InvalidTimeframeParameterError < StandardError; end
   rescue_from InvalidTimeframeParameterError, with: :bad_request_response

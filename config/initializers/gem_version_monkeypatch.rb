@@ -1,3 +1,4 @@
+# typed: true
 # This patch ensures that we don't have a memory leak when instanciating
 # Gem::Version.
 #

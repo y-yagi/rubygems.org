@@ -1,3 +1,4 @@
+# typed: true
 class Redirector
   def initialize(app)
     @app = app

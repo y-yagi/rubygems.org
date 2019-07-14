@@ -1,3 +1,4 @@
+# typed: false
 class CreateRubyforgers < ActiveRecord::Migration[4.2]
   def self.up
     create_table :rubyforgers do |t|

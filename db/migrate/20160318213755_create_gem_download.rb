@@ -1,3 +1,4 @@
+# typed: false
 class CreateGemDownload < ActiveRecord::Migration[4.2]
   def change
     create_table :gem_downloads do |t|

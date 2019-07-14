@@ -1,3 +1,4 @@
+# typed: true
 class Api::V1::SearchesController < Api::BaseController
   before_action :set_page, only: :show
   before_action :verify_query_string, only: :show

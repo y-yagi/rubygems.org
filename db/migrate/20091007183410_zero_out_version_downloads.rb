@@ -1,3 +1,4 @@
+# typed: true
 class ZeroOutVersionDownloads < ActiveRecord::Migration[4.2]
   def self.up
     # Version.update_all(:downloads_count => 0)

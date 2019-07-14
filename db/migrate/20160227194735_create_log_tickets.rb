@@ -1,3 +1,4 @@
+# typed: false
 class CreateLogTickets < ActiveRecord::Migration[4.2]
   def change
     create_table :log_tickets do |t|

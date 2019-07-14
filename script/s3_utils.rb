@@ -1,3 +1,4 @@
+# typed: false
 class S3Utils
   def initialize(bucket, credentials)
     @bucket = bucket

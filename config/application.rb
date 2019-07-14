@@ -1,3 +1,4 @@
+# typed: false
 require_relative 'boot'
 
 require 'active_record/railtie'

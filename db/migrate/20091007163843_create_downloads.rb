@@ -1,3 +1,4 @@
+# typed: false
 class CreateDownloads < ActiveRecord::Migration[4.2]
   def self.up
     create_table :downloads do |table|

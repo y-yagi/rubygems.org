@@ -1,3 +1,4 @@
+# typed: false
 class AddUniqueIndexes < ActiveRecord::Migration[4.2]
   def self.up
     remove_index :rubygems, column: [:name]

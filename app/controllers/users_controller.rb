@@ -1,3 +1,4 @@
+# typed: false
 class UsersController < Clearance::UsersController
   def new
     redirect_to sign_up_path

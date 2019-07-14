@@ -1,3 +1,4 @@
+# typed: true
 class AppRevision
   def self.version
     @version ||= revision_or_fallback

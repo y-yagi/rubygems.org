@@ -1,3 +1,4 @@
+# typed: strong
 require 'rubygems/package'
 require 'rubygems/indexer'
 require 'rdoc/markup'

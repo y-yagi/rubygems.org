@@ -1,3 +1,4 @@
+# typed: true
 class RemoveImproperlyEmbeddedYamlData < ActiveRecord::Migration[4.2]
   def self.up
     Dependency.where("requirements like '%YAML::Syck::DefaultKey%'").each do |d|
