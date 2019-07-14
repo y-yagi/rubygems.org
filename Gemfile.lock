@@ -359,6 +359,10 @@ GEM
       faraday (~> 0.9)
       jwt (>= 1.5, < 3.0)
       multi_json (~> 1.10)
+    sorbet (0.4.4429)
+      sorbet-static (= 0.4.4429)
+    sorbet-runtime (0.4.4429)
+    sorbet-static (0.4.4429-universal-darwin-14)
     sprockets (3.7.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
@@ -449,6 +453,8 @@ DEPENDENCIES
   sass
   shoryuken (~> 2.1.0)
   shoulda
+  sorbet
+  sorbet-runtime
   sprockets-rails
   statsd-instrument (~> 2.3.0)
   toxiproxy (~> 1.0.0)

@@ -40,6 +40,7 @@ gem "elasticsearch-dsl", "~> 0.1.2"
 gem "faraday_middleware-aws-sigv4", "~> 0.2.4"
 gem "xml-simple"
 gem "compact_index", "~> 0.11.0"
+gem "sorbet-runtime"
 gem "sprockets-rails"
 gem "rack-attack"
 gem "rqrcode"
@@ -59,6 +60,7 @@ end
 group :development do
   gem "rails-erd"
   gem "listen"
+  gem "sorbet"
 end
 
 group :test do
