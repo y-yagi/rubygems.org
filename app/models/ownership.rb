@@ -1,4 +1,4 @@
-# typed: true
+# typed: false
 class Ownership < ApplicationRecord
   belongs_to :rubygem
   belongs_to :user

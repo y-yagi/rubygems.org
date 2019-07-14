@@ -1,4 +1,4 @@
-# typed: true
+# typed: false
 class Mailer < ActionMailer::Base
   layout "mailer"
   include Roadie::Rails::Automatic

@@ -1,4 +1,4 @@
-# typed: false
+# typed: true
 class LogTicket < ApplicationRecord
   enum backend: %i[s3 local]
 
