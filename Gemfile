@@ -61,6 +61,7 @@ group :development do
   gem "rails-erd"
   gem "listen"
   gem "sorbet"
+  gem "sorbet-rails"
 end
 
 group :test do
