@@ -1,4 +1,4 @@
-# typed: false
+# typed: true
 class Ownership < ApplicationRecord
   belongs_to :rubygem
   belongs_to :user
@@ -10,6 +10,6 @@ class Ownership < ApplicationRecord
   end
 
   def safe_destroy
-    rubygem.owners.many? && destroy
+    T.must(rubygem).owners.many? && destroy
   end
 end

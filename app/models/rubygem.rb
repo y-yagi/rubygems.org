@@ -187,7 +187,7 @@ class Rubygem < ApplicationRecord
   end
 
   def to_param
-    name.remove(/[^#{Patterns::ALLOWED_CHARACTERS}]/)
+    T.must(name).remove(/[^#{Patterns::ALLOWED_CHARACTERS}]/)
   end
 
   def pushable?
@@ -214,8 +214,8 @@ class Rubygem < ApplicationRecord
 
   def update_linkset!(spec)
     self.linkset ||= Linkset.new
-    self.linkset.update_attributes_from_gem_specification!(spec)
-    self.linkset.save!
+    T.must(self.linkset).update_attributes_from_gem_specification!(spec)
+    T.must(self.linkset).save!
   end
 
   def update_attributes_from_gem_specification!(version, spec)
@@ -269,7 +269,7 @@ class Rubygem < ApplicationRecord
   # returns days left before the reserved namespace will be released
   # 100 + 1 days are added so that last_protected_day / 1.day = 1
   def protected_days
-    (updated_at + 101.days - Time.zone.now).to_i / 1.day
+    (T.must(updated_at) + 101.days - Time.zone.now).to_i / 1.day
   end
 
   def reverse_dependencies
@@ -291,7 +291,7 @@ class Rubygem < ApplicationRecord
   # a gem namespace is not protected if it is
   # updated(yanked) in more than 100 days or it is created in last 30 days
   def not_protected?
-    updated_at < 100.days.ago || created_at > 30.days.ago
+    T.must(updated_at) < 100.days.ago || T.must(created_at) > 30.days.ago
   end
 
   def ensure_name_format
@@ -311,7 +311,7 @@ class Rubygem < ApplicationRecord
   end
 
   def blacklist_names_exclusion
-    return unless GEM_NAME_BLACKLIST.include? name.downcase
+    return unless GEM_NAME_BLACKLIST.include? T.must(name).downcase
     errors.add :name, "'#{name}' is a reserved gem name."
   end
 

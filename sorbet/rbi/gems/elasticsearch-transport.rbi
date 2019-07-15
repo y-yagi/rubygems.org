@@ -217,3 +217,6 @@ module Elasticsearch::Client
   def new(arguments = nil, &block); end
   extend Elasticsearch::Client
 end
+
+class Elasticsearch::Transport::Transport::Error < StandardError
+end

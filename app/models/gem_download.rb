@@ -1,4 +1,4 @@
-# typed: false
+# typed: true
 class GemDownload < ApplicationRecord
   belongs_to :rubygem, optional: true
   belongs_to :version, optional: true
@@ -8,8 +8,6 @@ class GemDownload < ApplicationRecord
   class << self
     def count_for_version(id)
       v = Version.find(id)
-      return 0 unless v
-
       count_for(rubygem_id: v.rubygem_id, version_id: v.id)
     end
 

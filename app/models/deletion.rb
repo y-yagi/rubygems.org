@@ -1,4 +1,4 @@
-# typed: false
+# typed: true
 class Deletion < ApplicationRecord
   belongs_to :user
 
@@ -7,7 +7,8 @@ class Deletion < ApplicationRecord
   validate :version_is_indexed
 
   before_validation :record_metadata
-  after_create :remove_from_index, :set_yanked_info_checksum
+  after_create :remove_from_index
+  after_create :set_yanked_info_checksum
   after_commit :remove_from_storage, on: :create
   after_commit :expire_cache
   after_commit :update_search_index

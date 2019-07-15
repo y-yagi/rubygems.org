@@ -1,4 +1,4 @@
-# typed: false
+# typed: true
 class User < ApplicationRecord
   include Clearance::User
   include Gravtastic
@@ -137,7 +137,7 @@ class User < ApplicationRecord
 
   # confirmation token expires after 15 minutes
   def valid_confirmation_token?
-    token_expires_at > Time.zone.now
+    T.must(token_expires_at) > Time.zone.now
   end
 
   def generate_confirmation_token
@@ -162,7 +162,7 @@ class User < ApplicationRecord
   end
 
   def remember_me?
-    remember_token_expires_at && remember_token_expires_at > Time.zone.now
+    remember_token_expires_at && T.must(remember_token_expires_at) > Time.zone.now
   end
 
   def mfa_enabled?
@@ -202,8 +202,8 @@ class User < ApplicationRecord
     otp = otp.to_s
     return true if verify_digit_otp(mfa_seed, otp)
 
-    return false unless mfa_recovery_codes.include? otp
-    mfa_recovery_codes.delete(otp)
+    return false unless T.must(mfa_recovery_codes).include? otp
+    T.must(mfa_recovery_codes).delete(otp)
     save!(validate: false)
   end
 

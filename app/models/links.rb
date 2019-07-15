@@ -17,7 +17,14 @@ class Links
     "docs"      => "documentation_uri"
   }.freeze
 
-  attr_accessor :rubygem, :version, :linkset
+  sig {returns(Rubygem)}
+  attr_accessor :rubygem
+
+  sig {returns(Version)}
+  attr_accessor :version
+
+  sig {returns(Linkset)}
+  attr_accessor :linkset
 
   def initialize(rubygem, version)
     self.rubygem = rubygem
@@ -62,6 +69,7 @@ class Links
   # don't define for download_uri since it has special logic and is already defined
   # using a try because linkset does not define all the uri attributes
   LINKS.each do |short, long|
+    # TODO: https://github.com/sorbet/sorbet/issues/64
     unless method_defined?(long)
       define_method(long) do
         return version.metadata[long].presence if version.metadata_uri_set?

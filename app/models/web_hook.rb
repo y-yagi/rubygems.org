@@ -1,4 +1,4 @@
-# typed: false
+# typed: true
 class WebHook < ApplicationRecord
   GLOBAL_PATTERN = "*".freeze
 
@@ -17,7 +17,7 @@ class WebHook < ApplicationRecord
   end
 
   def fire(protocol, host_with_port, deploy_gem, version, delayed = true)
-    job = Notifier.new(url, protocol, host_with_port, deploy_gem, version, user.api_key)
+    job = Notifier.new(url, protocol, host_with_port, deploy_gem, version, T.must(user).api_key)
     if delayed
       Delayed::Job.enqueue job, priority: PRIORITIES[:web_hook]
     else
@@ -82,13 +82,13 @@ class WebHook < ApplicationRecord
 
   def unique_hook
     if user && rubygem
-      if WebHook.exists?(user_id: user.id,
-                         rubygem_id: rubygem.id,
+      if WebHook.exists?(user_id: T.must(user).id,
+                         rubygem_id: T.must(rubygem).id,
                          url: url)
-        errors[:base] << "A hook for #{url} has already been registered for #{rubygem.name}"
+        errors[:base] << "A hook for #{url} has already been registered for #{T.must(rubygem).name}"
       end
     elsif user
-      if WebHook.exists?(user_id: user.id,
+      if WebHook.exists?(user_id: T.must(user).id,
                          rubygem_id: nil,
                          url: url)
         errors[:base] << "A global hook for #{url} has already been registered"

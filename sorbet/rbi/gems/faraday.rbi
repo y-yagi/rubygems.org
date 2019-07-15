@@ -453,6 +453,8 @@ class Faraday::CompositeReadIO
   def read(length = nil, outbuf = nil); end
   def rewind; end
 end
+class Faraday::Error < StandardError
+end
 class Faraday::ClientError < Faraday::Error
   def backtrace; end
   def initialize(ex, response = nil); end
@@ -462,6 +464,8 @@ class Faraday::ClientError < Faraday::Error
 end
 class Faraday::TimeoutError < Faraday::ClientError
   def initialize(ex = nil); end
+end
+class Faraday::ConnectionFailed < Faraday::ClientError
 end
 module Faraday::AutoloadHelper
   def all_loaded_constants; end

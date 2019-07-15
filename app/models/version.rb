@@ -175,11 +175,11 @@ class Version < ApplicationRecord
   delegate :reorder_versions, to: :rubygem
 
   def previous
-    rubygem.versions.find_by(position: position + 1)
+    T.must(rubygem).versions.find_by(position: T.must(position) + 1)
   end
 
   def next
-    rubygem.versions.find_by(position: position - 1)
+    T.must(rubygem).versions.find_by(position: T.must(position) - 1)
   end
 
   def yanked?
@@ -237,7 +237,7 @@ class Version < ApplicationRecord
   end
 
   def slug
-    full_name.remove(/^#{rubygem.name}-/)
+    T.must(full_name).remove(/^#{T.must(rubygem).name}-/)
   end
 
   def downloads_count
@@ -278,21 +278,21 @@ class Version < ApplicationRecord
 
   def to_title
     if platformed?
-      "#{rubygem.name} (#{number}-#{platform})"
+      "#{T.must(rubygem).name} (#{number}-#{platform})"
     else
-      "#{rubygem.name} (#{number})"
+      "#{T.must(rubygem).name} (#{number})"
     end
   end
 
   def to_bundler
-    if number[0] == "0" || prerelease?
-      %(gem '#{rubygem.name}', '~> #{number}')
+    if T.must(number)[0] == "0" || prerelease?
+      %(gem '#{T.must(rubygem).name}', '~> #{number}')
     else
       release = feature_release(number)
       if release == Gem::Version.new(number)
-        %(gem '#{rubygem.name}', '~> #{release}')
+        %(gem '#{T.must(rubygem).name}', '~> #{release}')
       else
-        %(gem '#{rubygem.name}', '~> #{release}', '>= #{number}')
+        %(gem '#{T.must(rubygem).name}', '~> #{release}', '>= #{number}')
       end
     end
   end
@@ -302,11 +302,11 @@ class Version < ApplicationRecord
   end
 
   def to_install
-    command = "gem install #{rubygem.name}"
+    command = "gem install #{T.must(rubygem).name}"
     latest = if prerelease
-               rubygem.versions.by_position.prerelease.first
+               T.must(rubygem).versions.by_position.prerelease.first
              else
-               rubygem.versions.most_recent
+               T.must(rubygem).versions.most_recent
              end
     command << " -v #{number}" if latest != self
     command << " --pre" if prerelease
@@ -314,7 +314,7 @@ class Version < ApplicationRecord
   end
 
   def authors_array
-    authors.split(",").flatten
+    T.must(authors).split(",").flatten
   end
 
   def sha256_hex
@@ -330,7 +330,7 @@ class Version < ApplicationRecord
   end
 
   def yanker
-    Deletion.find_by(rubygem: rubygem.name, number: number, platform: platform)&.user unless indexed
+    Deletion.find_by(rubygem: T.must(rubygem).name, number: number, platform: platform)&.user unless indexed
   end
 
   private
@@ -354,8 +354,8 @@ class Version < ApplicationRecord
 
   def full_nameify!
     return if rubygem.nil?
-    self.full_name = "#{rubygem.name}-#{number}"
-    full_name << "-#{platform}" if platformed?
+    self.full_name = "#{T.must(rubygem).name}-#{number}"
+    T.must(full_name) << "-#{platform}" if platformed?
   end
 
   def feature_release(number)

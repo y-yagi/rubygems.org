@@ -1,11 +1,11 @@
-# typed: false
+# typed: true
 class Dependency < ApplicationRecord
   belongs_to :rubygem, optional: true
   belongs_to :version
 
-  before_validation :use_gem_dependency,
-    :use_existing_rubygem,
-    :parse_gem_dependency
+  before_validation :use_gem_dependency
+  before_validation :use_existing_rubygem
+  before_validation :parse_gem_dependency
 
   validates :requirements, presence: true
   validates :scope,        inclusion: { in: %w[development runtime] }
@@ -90,7 +90,7 @@ class Dependency < ApplicationRecord
   def use_existing_rubygem
     return if rubygem
 
-    self.rubygem = Rubygem.find_by_name(gem_dependency.name)
+    self.rubygem = Rubygem.find_by(name: gem_dependency.name)
 
     self.unresolved_name = gem_dependency.name unless rubygem
   end
